@@ -70,8 +70,13 @@ namespace ImportaXML
             this.button3 = new System.Windows.Forms.Button();
             this.txtCaminho = new System.Windows.Forms.TextBox();
             this.txtCompara = new System.Windows.Forms.Button();
-            this.lstXmls = new System.Windows.Forms.ListView();
-            this.NumXMl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstNFCeLidosForm2 = new System.Windows.Forms.ListView();
+            this.Num = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cfop = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Val = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusnfce = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -421,7 +426,7 @@ namespace ImportaXML
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1191, 28);
+            this.button3.Location = new System.Drawing.Point(1212, 42);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(34, 20);
             this.button3.TabIndex = 27;
@@ -431,7 +436,7 @@ namespace ImportaXML
             // 
             // txtCaminho
             // 
-            this.txtCaminho.Location = new System.Drawing.Point(899, 28);
+            this.txtCaminho.Location = new System.Drawing.Point(920, 42);
             this.txtCaminho.Name = "txtCaminho";
             this.txtCaminho.Size = new System.Drawing.Size(286, 20);
             this.txtCaminho.TabIndex = 26;
@@ -439,7 +444,7 @@ namespace ImportaXML
             // 
             // txtCompara
             // 
-            this.txtCompara.Location = new System.Drawing.Point(1150, 60);
+            this.txtCompara.Location = new System.Drawing.Point(1171, 74);
             this.txtCompara.Name = "txtCompara";
             this.txtCompara.Size = new System.Drawing.Size(75, 23);
             this.txtCompara.TabIndex = 28;
@@ -447,33 +452,55 @@ namespace ImportaXML
             this.txtCompara.UseVisualStyleBackColor = true;
             this.txtCompara.Click += new System.EventHandler(this.txtCompara_Click);
             // 
-            // lstXmls
+            // lstNFCeLidosForm2
             // 
-            this.lstXmls.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.NumXMl});
-            this.lstXmls.FullRowSelect = true;
-            this.lstXmls.GridLines = true;
-            this.lstXmls.HideSelection = false;
-            this.lstXmls.HoverSelection = true;
-            this.lstXmls.Location = new System.Drawing.Point(702, 119);
-            this.lstXmls.Name = "lstXmls";
-            this.lstXmls.Size = new System.Drawing.Size(572, 523);
-            this.lstXmls.TabIndex = 29;
-            this.lstXmls.UseCompatibleStateImageBehavior = false;
-            this.lstXmls.View = System.Windows.Forms.View.Details;
-            this.lstXmls.SelectedIndexChanged += new System.EventHandler(this.lstXmls_SelectedIndexChanged);
+            this.lstNFCeLidosForm2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Num,
+            this.mod,
+            this.dat,
+            this.cfop,
+            this.Val,
+            this.statusnfce});
+            this.lstNFCeLidosForm2.HideSelection = false;
+            this.lstNFCeLidosForm2.Location = new System.Drawing.Point(702, 119);
+            this.lstNFCeLidosForm2.Name = "lstNFCeLidosForm2";
+            this.lstNFCeLidosForm2.Size = new System.Drawing.Size(544, 523);
+            this.lstNFCeLidosForm2.TabIndex = 30;
+            this.lstNFCeLidosForm2.UseCompatibleStateImageBehavior = false;
+            this.lstNFCeLidosForm2.View = System.Windows.Forms.View.Details;
+            this.lstNFCeLidosForm2.SelectedIndexChanged += new System.EventHandler(this.lstNFCeLidosForm2_SelectedIndexChanged);
             // 
-            // NumXMl
+            // Num
             // 
-            this.NumXMl.Text = "Números XML";
-            this.NumXMl.Width = 120;
+            this.Num.Text = "Número";
+            // 
+            // mod
+            // 
+            this.mod.Text = "Modelo";
+            // 
+            // dat
+            // 
+            this.dat.Text = "Data de emissão";
+            this.dat.Width = 100;
+            // 
+            // cfop
+            // 
+            this.cfop.Text = "CFOP";
+            // 
+            // Val
+            // 
+            this.Val.Text = "Valor";
+            // 
+            // statusnfce
+            // 
+            this.statusnfce.Text = "Status";
             // 
             // frmNfce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 758);
-            this.Controls.Add(this.lstXmls);
+            this.Controls.Add(this.lstNFCeLidosForm2);
             this.Controls.Add(this.txtCompara);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtCaminho);
@@ -498,6 +525,7 @@ namespace ImportaXML
             this.Name = "frmNfce";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa do banco";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmNfce_FormClosed);
             this.Load += new System.EventHandler(this.frmNfce_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -549,7 +577,12 @@ namespace ImportaXML
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtCaminho;
         private System.Windows.Forms.Button txtCompara;
-        private System.Windows.Forms.ListView lstXmls;
-        private System.Windows.Forms.ColumnHeader NumXMl;
+        public System.Windows.Forms.ListView lstNFCeLidosForm2;
+        private System.Windows.Forms.ColumnHeader Num;
+        private System.Windows.Forms.ColumnHeader mod;
+        private System.Windows.Forms.ColumnHeader dat;
+        private System.Windows.Forms.ColumnHeader cfop;
+        private System.Windows.Forms.ColumnHeader Val;
+        private System.Windows.Forms.ColumnHeader statusnfce;
     }
 }

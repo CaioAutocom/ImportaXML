@@ -33,7 +33,7 @@ namespace ImportaXML
             this.button1 = new System.Windows.Forms.Button();
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstNFCeLidos = new System.Windows.Forms.ListView();
             this.Num = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -84,23 +84,23 @@ namespace ImportaXML
             this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
             // 
-            // listView1
+            // lstNFCeLidos
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstNFCeLidos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Num,
             this.mod,
             this.dat,
             this.cfop,
             this.Val,
             this.statusnfce});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(11, 88);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(421, 404);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.lstNFCeLidos.HideSelection = false;
+            this.lstNFCeLidos.Location = new System.Drawing.Point(11, 88);
+            this.lstNFCeLidos.Name = "lstNFCeLidos";
+            this.lstNFCeLidos.Size = new System.Drawing.Size(421, 404);
+            this.lstNFCeLidos.TabIndex = 3;
+            this.lstNFCeLidos.UseCompatibleStateImageBehavior = false;
+            this.lstNFCeLidos.View = System.Windows.Forms.View.Details;
+            this.lstNFCeLidos.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Num
             // 
@@ -210,7 +210,7 @@ namespace ImportaXML
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnImporta);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstNFCeLidos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCaminho);
@@ -231,7 +231,6 @@ namespace ImportaXML
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog ofd1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnImporta;
         private System.Windows.Forms.ColumnHeader Num;
         private System.Windows.Forms.ColumnHeader mod;
@@ -246,6 +245,7 @@ namespace ImportaXML
         private System.Windows.Forms.ColumnHeader cfop;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem consultaBancoDeDadosToolStripMenuItem;
+        public System.Windows.Forms.ListView lstNFCeLidos;
     }
 }
 

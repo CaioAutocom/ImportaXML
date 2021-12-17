@@ -96,7 +96,7 @@ namespace ImportaXML
             {
                 using (StreamWriter writer = new StreamWriter(saveDialog.FileName))
                 {
-                    foreach (ListViewItem item in listView1.Items)
+                    foreach (ListViewItem item in lstNFCeLidos.Items)
                     {
                         await writer.WriteLineAsync(item.SubItems[0].Text + "\t" + item.SubItems[1].Text + "\t" + item.SubItems[2].Text + "\t" + item.SubItems[3].Text + "\t" + item.SubItems[4].Text + "\t" + item.SubItems[5].Text);
                     }
@@ -136,12 +136,13 @@ namespace ImportaXML
                     qtd += 1;
                     try
                     {
-                        listView1.Items.Add(new ListViewItem(new[] { nota.numero, nota.mod, nota.data, nota.cfop , nota.valor, nota.status, })); ;
+                        lstNFCeLidos.Items.Add(new ListViewItem(new[] { nota.numero, nota.mod, nota.data, nota.cfop, nota.valor, nota.status, })); ;
+
                         soma = Convert.ToDouble(nota.valor) + soma;
                     }
                     catch (Exception)
                     {
-                        listView1.Items.Add(new ListViewItem(new[] { "inválido", "inválido", "inválido", "inválido" })); ;
+                        lstNFCeLidos.Items.Add(new ListViewItem(new[] { "inválido", "inválido", "inválido", "inválido" })); ;
                     }
 
             }
@@ -170,7 +171,8 @@ namespace ImportaXML
 
         private void consultaBancoDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNfce frm = new frmNfce(listView1);
+            
+            frmNfce frm = new frmNfce(this);
             frm.Show();
 
         }

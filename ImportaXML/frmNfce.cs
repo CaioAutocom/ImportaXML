@@ -5,13 +5,28 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using System.Xml;
+
 
 namespace ImportaXML
 {
     public partial class frmNfce : Form
+
     {
+
+        private Form1 form1;
+
+
+
+        public frmNfce(Form1 frm1)
+        {
+            InitializeComponent();
+            form1 = frm1;
+        }
+        public List<string> lstXMLs = new List<string>();
+
         Conexao cn = new Conexao();
         List<string> chaves = new List<string>();
         string rootPath = @"C:\AutoCom\eSistemNFCe\NFCe";
@@ -22,10 +37,12 @@ namespace ImportaXML
         int qtdXmlEncontrados = 0;
         int i = 0;
 
-        public frmNfce(ListView xmlLidos)
+        public frmNfce()
         {
             InitializeComponent();
         }
+
+
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
@@ -34,7 +51,31 @@ namespace ImportaXML
 
         private void frmNfce_Load(object sender, EventArgs e)
         {
+            
+            //lstNFCeLidos.Items.Add(new ListViewItem(new[] { nota.numero, nota.mod, nota.data, nota.cfop, nota.valor, nota.status, })); ;
+            for (int i = 0; i < form1.lstNFCeLidos.Items.Count; i++)
+            {
+                //lstNFCeLidosForm2.Items.Add(new ListViewItem(form1.lstNFCeLidos.Items[i].ToString()));
+                //for (int j = 1; j < 4; j++)
+                //{
+                //listView1.SelectedItems[0].Subitems[1].Text;
+                lstNFCeLidosForm2.Items.Add(new ListViewItem(form1.lstNFCeLidos.Items[i].Text));
+                for (int j = 1; j < form1.lstNFCeLidos.Items[i].SubItems.Count; j++)
+                { 
+                    lstNFCeLidosForm2.Items[i].SubItems.Add(form1.lstNFCeLidos.Items[i].SubItems[j].Text);
 
+                }
+            }
+        
+            //}
+            //istView1.Items[0].SubItems.Add("John Smith");
+            //for (int j; i < form1.lstNFCeLidos.Items[i])
+            //{
+            //    lstNFCeLidosForm2.Columns.Add(new listViewItem(form1.lstNFCeLidos.Items[i].Text)
+            //}
+            //form1.lstNFCeLidos.Columns[j]
+        
+            //lstNFCeLidosForms2 = form1.lstNFCeLidos.Items;
         }
 
         private void btnConecta_Click(object sender, EventArgs e)
@@ -80,7 +121,7 @@ namespace ImportaXML
                 chaves.Add(dt.Rows[i].ItemArray[5].ToString());
                 valorTotal += Convert.ToDecimal(dt.Rows[i].ItemArray[4]);
 
-                lstNFCE.Items.Add(new ListViewItem(new[] {
+               lstNFCE.Items.Add(new ListViewItem(new[] {
                dt.Rows[i].ItemArray[0].ToString(),
                dt.Rows[i].ItemArray[1].ToString(),
                dt.Rows[i].ItemArray[2].ToString(),
@@ -192,7 +233,17 @@ namespace ImportaXML
 
         private void lstXmls_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
 
+        private void lstNFCeLidosForm2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void frmNfce_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            lstNFCeLidosForm2.Clear();
         }
     }
 
